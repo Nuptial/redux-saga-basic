@@ -1,15 +1,20 @@
 const reducer = (state = {}, action) => {
     switch (action.type) {
-        case 'GET_NEWS':
+        case 'GET_POSTS':
             return {
                 ...state,
                 loading: true
             };
-        case 'NEWS_RECEIVED':
+        case 'POSTS_RECEIVED':
             return {
                 ...state,
-                news: action.json[0],
+                posts: action.json,
                 loading: false
+            }
+        case 'FILTER_POSTS':
+            return {
+                ...state,
+                filterText: action.filterText
             }
         default:
             return state;

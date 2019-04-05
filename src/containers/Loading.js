@@ -4,13 +4,19 @@ import img from "../loading_spinner.gif";
 
 let Loading = ({ loading }) =>
   loading ? (
-    <div style={{ textAlign: "center" }}>
+    <div
+      style={{
+        textAlign: "center"
+      }}
+    >
       <img src={img} alt="loading" />
-      <h1>LOADING</h1>
+      <h1> LOADING </h1>{" "}
     </div>
   ) : null;
 
-const mapStateToProps = state => ({ loading: state.loading });
+const mapStateToProps = state => ({
+  loading: state.loading
+});
 
 Loading = connect(
   mapStateToProps,

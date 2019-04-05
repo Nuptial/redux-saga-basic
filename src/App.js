@@ -1,28 +1,37 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import SearchFilter from "./containers/SearchFilter";
+import PostLists from "./containers/PostLists";
+import Loading from "./containers/Loading";
+import { getPosts } from "./actions";
+import { connect } from "react-redux";
+
+const containerStyle = {
+  marginTop: "10px"
+};
 
 class App extends Component {
+  componentDidMount() {
+    this.props.getPosts();
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="container" style={containerStyle}>
+        <SearchFilter />
+        <Loading />
+        <PostLists />
       </div>
     );
   }
 }
+
+const mapDispatchToProps = {
+  getPosts: getPosts
+};
+
+App = connect(
+  null,
+  mapDispatchToProps
+)(App);
 
 export default App;
