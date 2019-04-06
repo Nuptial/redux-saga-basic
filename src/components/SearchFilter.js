@@ -8,6 +8,7 @@ class SearchFilter extends Component {
 
     this.filterPosts = this.filterPosts.bind(this);
   }
+
   filterPosts(event) {
     this.props.filterPosts(event.target.value);
   }

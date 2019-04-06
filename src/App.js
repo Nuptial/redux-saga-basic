@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import SearchFilter from "./containers/SearchFilter";
-import PostLists from "./containers/PostLists";
-import Loading from "./containers/Loading";
+import SearchFilter from "./components/SearchFilter";
+import PostLists from "./components/PostLists";
+import Loading from "./components/Loading";
 import { getPosts } from "./actions";
 import { connect } from "react-redux";
 
