@@ -5,16 +5,22 @@ const reducer = (state = {}, action) => {
                 ...state,
                 loading: true
             };
+        case 'GET_MORE_POSTS':
+            return {
+                ...state,
+                loading: true
+            };
         case 'POSTS_RECEIVED':
             return {
                 ...state,
                 posts: action.json,
                 loading: false
             }
-        case 'FILTER_POSTS':
+        case 'GET_MORE_POSTS_RECEIVED':
             return {
                 ...state,
-                filterText: action.filterText
+                posts: state.posts.concat(action.json),
+                loading: false
             }
         default:
             return state;

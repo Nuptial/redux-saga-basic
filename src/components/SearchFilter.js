@@ -1,41 +1,16 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { filterPosts } from "../actions";
+import * as React from "react";
 
-class SearchFilter extends Component {
-  constructor(props) {
-    super(props);
+const SearchFilter = props => {
+  const { onChange } = props;
 
-    this.filterPosts = this.filterPosts.bind(this);
-  }
-
-  filterPosts(event) {
-    this.props.filterPosts(event.target.value);
-  }
-
-  render() {
-    return (
-      <input
-        className="form-control"
-        placeholder="Type to filter"
-        type="text"
-        onChange={this.filterPosts}
-      />
-    );
-  }
-}
-
-const mapStateToProps = state => ({
-  filterText: state.filterText
-});
-
-const mapDispatchToProps = {
-  filterPosts: filterPosts
+  return (
+    <input
+      className="form-control"
+      placeholder="Type to filter"
+      type="text"
+      onChange={onChange}
+    />
+  );
 };
-
-SearchFilter = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SearchFilter);
 
 export default SearchFilter;

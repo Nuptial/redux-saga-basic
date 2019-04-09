@@ -10,13 +10,7 @@ import rootSaga from "./sagas";
 import "bootstrap/dist/css/bootstrap.css";
 const sagaMiddleware = createSagaMiddleware();
 
-const store = createStore(
-  reducer,
-  {
-    filterText: ""
-  },
-  applyMiddleware(sagaMiddleware, logger)
-);
+const store = createStore(reducer, applyMiddleware(sagaMiddleware, logger));
 
 sagaMiddleware.run(rootSaga);
 

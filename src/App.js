@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import SearchFilter from "./components/SearchFilter";
 import PostLists from "./components/PostLists";
 import Loading from "./components/Loading";
-import { getPosts } from "./actions";
+import { getPosts, getMorePosts } from "./actions";
 import { connect } from "react-redux";
 
 const containerStyle = {
@@ -12,21 +11,29 @@ const containerStyle = {
 class App extends Component {
   componentDidMount() {
     this.props.getPosts();
+
+    window.addEventListener("scroll", this.handleScroll);
   }
+
+  handleScroll = () => {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+      this.props.getMorePosts();
+    }
+  };
 
   render() {
     return (
       <div className="container" style={containerStyle}>
-        <SearchFilter />
-        <Loading />
         <PostLists />
+        <Loading />
       </div>
     );
   }
 }
 
 const mapDispatchToProps = {
-  getPosts: getPosts
+  getPosts: getPosts,
+  getMorePosts: getMorePosts
 };
 
 App = connect(
