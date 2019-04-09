@@ -6,7 +6,10 @@ import SearchFilter from "./SearchFilter";
 class PostLists extends Component {
   constructor(props) {
     super(props);
-    this.state = { filterText: "" };
+
+    this.state = {
+      filterText: ""
+    };
   }
 
   handleChange = event => {
@@ -18,17 +21,20 @@ class PostLists extends Component {
   render() {
     return (
       <div>
-        <SearchFilter onChange={this.handleChange} />
+        <SearchFilter onChange={this.handleChange} />{" "}
         {this.props.posts
           ? this.props.posts
               .filter(
                 post =>
                   post.title
                     .toLowerCase()
+                    .indexOf(this.state.filterText.toLowerCase()) > -1 ||
+                  post.body
+                    .toLowerCase()
                     .indexOf(this.state.filterText.toLowerCase()) > -1
               )
               .map((post, index) => <PostItem key={index} post={post} />)
-          : null}
+          : null}{" "}
       </div>
     );
   }

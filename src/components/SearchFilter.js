@@ -1,8 +1,6 @@
-import * as React from "react";
+import React from "react";
 
-const SearchFilter = props => {
-  const { onChange } = props;
-
+let SearchFilter = ({ onChange }) => {
   return (
     <input
       className="form-control"
