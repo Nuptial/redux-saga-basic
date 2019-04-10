@@ -5,7 +5,7 @@ import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import { logger } from "redux-logger";
 import reducer from "./reducers";
-import App from "./App";
+import Container from "./containers/Container";
 import rootSaga from "./sagas";
 import "bootstrap/dist/css/bootstrap.css";
 const sagaMiddleware = createSagaMiddleware();
@@ -16,7 +16,7 @@ sagaMiddleware.run(rootSaga);
 
 render(
   <Provider store={store}>
-    <App />
+    <Container />
   </Provider>,
   document.getElementById("root")
 );

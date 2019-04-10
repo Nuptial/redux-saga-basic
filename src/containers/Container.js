@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import PostLists from "./containers/PostLists";
-import Loading from "./components/Loading";
-import { getPosts, getMorePosts } from "./actions";
+import PostLists from "./PostLists";
+import Loading from "../components/Loading";
+import { getPosts, getMorePosts } from "../actions";
 import { connect } from "react-redux";
 
 const containerStyle = {
   marginTop: "10px"
 };
 
-class App extends Component {
+class Container extends Component {
   componentDidMount() {
     this.props.getPosts();
 
@@ -36,9 +36,9 @@ const mapDispatchToProps = {
   getMorePosts: getMorePosts
 };
 
-App = connect(
+Container = connect(
   null,
   mapDispatchToProps
-)(App);
+)(Container);
 
-export default App;
+export default Container;
